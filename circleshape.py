@@ -1,4 +1,4 @@
-import pygame
+import pygame # pyright: ignore[reportMissingImports]
 from constants import *
 
 # Base class for game objects
@@ -21,3 +21,7 @@ class CircleShape(pygame.sprite.Sprite):
     def update(self, dt):
         # must override
         pass
+
+    def collides_with(self, other):
+        a_distance = self.position.distance_to(other.position)
+        return self.radius + other.radius >= a_distance
